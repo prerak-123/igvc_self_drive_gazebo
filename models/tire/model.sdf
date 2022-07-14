@@ -1,0 +1,48 @@
+<?xml version="1.0" ?>
+<sdf version="1.6">
+
+  <model name="tire">
+  <pose>0 0 0 0 0 0</pose>
+  <static>true</static>
+  <link name="link" >
+    <visual name="visual">
+      <pose>0 0 0 0 0 0</pose>
+      <geometry>
+        <mesh>
+<!--           <uri>package://igvc_self_drive_description/meshes/wheel.dae</uri> -->
+          <uri>model://tire/meshes/tire.dae</uri>
+        </mesh>
+      </geometry>
+<!--         <material>
+        <ambient>0.6 0.6 0.6 0.6</ambient>
+        <diffuse>0.5 0.5 0.5 0.5</diffuse>
+        <specular>0.5 0.5 0.5 0.5</specular>
+        <emissive>0 0 0 0</emissive>
+      </material> -->
+    </visual>
+
+    <collision name="collision">
+      <pose>0 0 0 0 0 0</pose>
+      <geometry>
+        <cylinder>
+          <radius>0.32</radius>
+          <length>0.17</length>
+        </cylinder>
+      </geometry>
+    </collision>
+
+    <inertial>
+      <pose>0 0 0 0 0 0</pose>
+      <mass>10.0</mass>
+      <inertia>
+        <ixx>0.28</ixx>
+        <iyy>0.28</iyy>
+        <izz>0.512</izz>
+        <ixy>0</ixy>
+        <ixz>0</ixz>
+      </inertia>
+    </inertial>
+
+  </link>
+  </model>
+</sdf>

@@ -1,0 +1,76 @@
+<?xml version="1.0" ?>
+<sdf version="1.6">
+<!--   <model name="pothole">
+    <pose>0 0 0 0 0 0</pose>
+    <static>true</static>
+    <link name="link">
+      <inertial>
+        <pose>0 0 0 0 0 0</pose>
+        <mass>1</mass>
+        <inertia>
+          <ixx>1</ixx>
+          <iyy>1</iyy>
+          <izz>1</izz>
+          <ixy>0</ixy>
+          <ixz>0</ixz>
+        </inertia>
+      </inertial>
+      <visual name="visual">
+        <geometry>
+          <mesh>
+            <uri>model://pothole/meshes/pothole.dae</uri>
+          </mesh>
+        </geometry>
+      </visual>
+      <collision name="collision">
+        <geometry>
+          <mesh>
+            <uri>model://pothole/meshes/pothole.dae</uri>
+          </mesh>
+        </geometry>
+      </collision>
+    </link>
+  </model> -->
+
+  <model name="pothole">
+  <pose>0 0 0 0 0 0</pose>
+  <static>true</static>
+  <link name="link">
+    <inertial>
+      <pose>0 0 0 0 0 0</pose>
+      <mass>1</mass>
+      <inertia>
+        <ixx>1</ixx>
+        <iyy>1</iyy>
+        <izz>1</izz>
+        <ixy>0</ixy>
+        <ixz>0</ixz>
+      </inertia>
+    </inertial>
+      <visual name='visual'>
+        <geometry>
+          <cylinder>
+            <radius>.305</radius>
+            <length>0.15</length>
+          </cylinder>
+        </geometry>
+        <material>
+          <ambient>0.6 0.6 0.6 0.6</ambient>
+          <diffuse>0.5 0.5 0.5 0.5</diffuse>
+          <specular>0.5 0.5 0.5 0.5</specular>
+          <emissive>0 0 0 0</emissive>
+        </material>
+      </visual>
+      <collision name='collision'>
+        <geometry>
+          <cylinder>
+            <radius>.305</radius>
+            <length>0.15</length>
+          </cylinder>
+        </geometry>
+    </collision>
+  </link>
+  </model>
+
+</sdf>
+

@@ -1,0 +1,29 @@
+material StopSign5/Diffuse
+{
+  receive_shadows off
+  technique
+  {
+    pass
+    {
+      texture_unit
+      {
+        texture StopSign5_Diffuse.png
+      }
+    }
+  }
+}
+
+material StopSign/Specular
+{
+  receive_shadows off
+  technique
+  {
+    pass
+    {
+      texture_unit
+      {
+        texture StopSign_Spec.png
+      }
+    }
+  }
+}

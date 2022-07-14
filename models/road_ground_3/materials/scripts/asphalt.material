@@ -1,0 +1,21 @@
+material teju/road3
+{
+	technique
+	{
+		pass
+		{
+			ambient 0.5 0.5 0.5 1.0
+			diffuse 0.5 0.5 0.5 1.0
+			specular 1.0 1.0 1.0 1.0 100
+			emissive 0.5 0.5 0.5 1.0
+
+			texture_unit
+			{
+				texture road3.jpg
+				filtering anistropic
+				max_anisotropy 16
+				scale 0.1 0.1
+			}
+		}
+	}
+}
