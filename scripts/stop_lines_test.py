@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 
 import rospy
 from math import sqrt
@@ -13,8 +13,8 @@ class Distance:
         self.car_y = None
         self.obstacle_x = obstacle_x
         self.obstacle_y = obstacle_y
-        
-        self.rate = rospy.Rate(1000)
+        self.car_dist = None
+        self.EPSILON = 0.01 #Tunable variable
         
         rospy.Subscriber('gazebo/model_states', ModelStates, self.callback)
     
@@ -23,12 +23,18 @@ class Distance:
         self.car_x = data.pose[data.name.index('vehicle')].position.x
         self.car_y = data.pose[data.name.index('vehicle')].position.y
         self.distance()
-        self.rate.sleep()
     
     def distance(self):
         dist = sqrt((self.obstacle_x - self.car_x) ** 2 + (self.obstacle_y - self.car_y) ** 2)
-        self.pub.publish(dist)
-        print(dist, "Successfully Published")
+        if self.car_dist == None:
+            self.car_dist = dist
+            self.pub.publish(dist)
+            print(dist, "Successfully Published")
+            
+        elif abs(self.car_dist - dist) > self.EPSILON:
+            self.car_dist = dist
+            self.pub.publish(dist)
+            print(dist, "Successfully Published")
 
 if __name__ == "__main__":
     try :
