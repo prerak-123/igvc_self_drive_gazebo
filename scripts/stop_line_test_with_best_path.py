@@ -43,7 +43,7 @@ class Distance:
     def path_planner(self):
         vec_x = (self.obstacle_x - self.car_x)/10
         vec_y = (self.obstacle_y - self.car_y)/10
-        path_list = [[],[],[],[],[],[],[],[],[],[]]
+        path_list = [[None,None],[None,None],[None,None],[None,None],[None,None],[None],[None,None],[None,None],[None,None],[None,None]]
         for i in range(10):
             x_pub = self.car_x + vec_x*i
             y_pub = self.car_y + vec_y*i
