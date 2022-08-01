@@ -12,7 +12,7 @@
 
 // components ros action server use
 #include <actionlib/server/simple_action_server.h>
-#include <igvc_action_server/stopBehaviourAction.h>
+#include <igvc_self_drive_gazebo/stoplineAction.h>
 
 using namespace std;
 
@@ -41,12 +41,12 @@ class StopBehaviour
 // protected:
 public:
     ros::NodeHandle stopAction_nh;
-    actionlib::SimpleActionServer<igvc_action_server::stopBehaviourAction> actionServer;
+    actionlib::SimpleActionServer<igvc_self_drive_gazebo::stoplineAction> actionServer;
     
     std::string actionName;
 
-    igvc_action_server::stopBehaviourFeedback feedback;
-    igvc_action_server::stopBehaviourResult result;
+    igvc_self_drive_gazebo::stoplineFeedback feedback;
+    igvc_self_drive_gazebo::stoplineResult result;
 
 public:
     StopBehaviour(std::string name):actionServer(stopAction_nh, name,
@@ -59,7 +59,7 @@ public:
     {
     }
 
-    void executeCB(const igvc_action_server::stopBehaviourGoal::ConstPtr &goal)
+    void executeCB(const igvc_self_drive_gazebo::stoplineGoal::ConstPtr &goal)
     {
         ros::Rate rate(1);
         bool success = true;

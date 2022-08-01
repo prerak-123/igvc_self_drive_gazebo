@@ -1,0 +1,12 @@
+# goal definition
+int64 stopBeforeDistance
+---
+# result definition
+bool success
+bool crossedThreshold
+bool immediateBreak
+bool StoppedBefore
+---
+# feedback
+float64 floatDistStopLine
+int32 stopLineIndexOnPath

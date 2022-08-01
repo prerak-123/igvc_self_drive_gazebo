@@ -3,14 +3,14 @@
 import rospy
 from math import sqrt
 from gazebo_msgs.msg import ModelStates
-from std_msgs.msg import Float32
+from std_msgs.msg import Float64
 from nav_msgs.msg import Path
 from geometry_msgs.msg import PoseStamped
 
 class Distance:
     def __init__(self, obstacle_x, obstacle_y):
         
-        self.dist_pub = rospy.Publisher('dm/distance', Float32, queue_size=30)
+        self.dist_pub = rospy.Publisher('dm/distance', Float64, queue_size=30)
         self.path_pub = rospy.Publisher('/best_path', Path, queue_size = 10) #look into the queue size 
         self.car_x = None
         self.car_y = None
@@ -37,19 +37,37 @@ class Distance:
             
         elif abs(self.car_dist - dist) > self.EPSILON:
             self.car_dist = dist
-            self.pub.publish(dist)
+            self.dist_pub.publish(dist)
             print(dist, "Successfully Published")
 
     def path_planner(self):
-        vec_x = (self.obstacle_x - self.car_x)/10
-        vec_y = (self.obstacle_y - self.car_y)/10
-        path_list = [[None,None],[None,None],[None,None],[None,None],[None,None],[None],[None,None],[None,None],[None,None],[None,None]]
+        # vec_x = (self.obstacle_x - self.car_x)/10
+        # vec_y = (self.obstacle_y - self.car_y)/10
+        # path_list = [[None,None],[None,None],[None,None],[None,None],[None,None],[None, None],[None,None],[None,None],[None,None],[None,None]]
+        # for i in range(10):
+        #     x_pub = self.car_x + vec_x*(10-i)
+        #     y_pub = self.car_y + vec_y*i
+        #     path_list[i][0] = x_pub
+        #     path_list[i][1] = y_pub
+            
+        # print(path_list)
+        
+        obstacle_relative_pos_x = self.obstacle_x - self.car_x + 10
+        obstacle_relative_pos_y = self.obstacle_y - self.car_y + 10
+
+        path_list = [[None,None],[None,None],[None,None],[None,None],[None,None],[None, None],[None,None],[None,None],[None,None],[None,None]]
+        
+        vec_x = (obstacle_relative_pos_x - 10) / 10
+        vec_y = (obstacle_relative_pos_y - 10) / 10
+        
         for i in range(10):
-            x_pub = self.car_x + vec_x*i
-            y_pub = self.car_y + vec_y*i
+            x_pub = 10 + vec_x*(i)
+            y_pub = 10 + vec_y*i
             path_list[i][0] = x_pub
             path_list[i][1] = y_pub
         return(path_list)
+        #obstacle_relative_pos_x = self.obstacle_x + 10
+        #obstacle_relative_pos_x = 
 
     def path(self):
         msg = Path()

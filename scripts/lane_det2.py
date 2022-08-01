@@ -11,7 +11,8 @@ from sensor_msgs.msg import Image
 from nav_msgs.msg import OccupancyGrid
 from geometry_msgs.msg import PoseStamped
 from sklearn.cluster import AgglomerativeClustering
-from igvc_self_drive_gazebo.msg import CV
+
+
 
 algo = AgglomerativeClustering(3)
 
@@ -189,7 +190,6 @@ class opencv_algo():
         self.publishLaneOccGrid(lane_occ_grid_img)
 
         x0,y0,x1,y1,x2,y2 = self.getlane_pixels(lane_occ_grid_img)
-        print(x1)
         localgoal_x, localgoal_y = self.markLocalGoal(x1,y1,warped)
 
         # publish local goal

@@ -171,16 +171,24 @@ void PathCallback(const nav_msgs::Path::ConstPtr& msg){
 
 }
 
+void velCallback(const std_msgs::Float64MultiArray msg){
+    target_vel = msg.data[0];
+    return;
+}
+
 
 
 
 int main(int argc,char** argv)
 {
 	ros::init(argc,argv,"purepursuit");
-	ros::NodeHandle PathSubNode, ModelStateSubNode, ThrottlePubNode, SteerPubNode, BrakePubNode;
+	ros::NodeHandle PathSubNode, ModelStateSubNode, ThrottlePubNode, SteerPubNode, BrakePubNode, velArrSubNode;
 
-	ros::Subscriber SubPath = PathSubNode.subscribe<nav_msgs::Path>("/path",1,PathCallback);
+	ros::Subscriber SubPath = PathSubNode.subscribe<nav_msgs::Path>("/best_path",1,PathCallback);
 	ros::Subscriber SubModelState = ModelStateSubNode.subscribe<gazebo_msgs::ModelStates>("/gazebo/model_states",1,ModelStateCallback);
+
+	ros::Subscriber VelArrSub = velArrSubNode.subscribe<std_msgs::Float64MultiArray>("/best_velocity",1,velCallback);
+
 
 	pub_throttle = ThrottlePubNode.advertise<std_msgs::Float64>("/throttle_cmd",1);
 	pub_brake = BrakePubNode.advertise<std_msgs::Float64>("/brake_cmd",1);
@@ -195,4 +203,3 @@ int main(int argc,char** argv)
 	}
 	return 0;
 }
-Footer
