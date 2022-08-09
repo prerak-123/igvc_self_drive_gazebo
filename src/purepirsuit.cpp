@@ -172,7 +172,8 @@ void PathCallback(const nav_msgs::Path::ConstPtr& msg){
 }
 
 void velCallback(const std_msgs::Float64MultiArray msg){
-    target_vel = msg.data[0];
+    std::cout << "Target Vel: "<<msg.data[2] << "\n";
+    target_vel = msg.data[2];
     return;
 }
 

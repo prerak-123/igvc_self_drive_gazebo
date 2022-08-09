@@ -151,6 +151,7 @@ void CurrentVel(const gazebo_msgs::ModelStates::ConstPtr& msg)
     float vx = msg->twist[11].linear.x; // 11?? 
     float vy = msg->twist[11].linear.y;
     currentvel = sqrt((vx*vx)+(vy*vy));   // pyth why?
+    std::cout << "Current Vel: "<<currentvel << '\n';
 }
 
 void PathCallback(const nav_msgs::Path::ConstPtr& msg)
@@ -205,6 +206,9 @@ void PathCallback(const nav_msgs::Path::ConstPtr& msg)
         Vel.data = SignumScalingFunction(&Vel, stopLineIndexOnPath);
     }
 
+    for(int i = 0; i < 8; i++){
+        std::cout << i << " " << Vel.data[i] << '\n';
+    }
 	pub_vel_arr.publish(Vel);	
     Vel.data.clear();
 }
@@ -218,7 +222,6 @@ int main(int argc, char **argv)
 	ros::Subscriber sub_path = RosNodeH.subscribe("/best_path",1,PathCallback); 
 
     ros::Subscriber stopLineDistance_Sub = RosNodeH.subscribe("dm/distance", 1000, CV_Stopline_callback);
-
     pub_vel_arr = RosNodeH.advertise<std_msgs::Float64MultiArray>("/best_velocity", 1);			
 
 	ros::Rate loop_rate(4);
