@@ -151,7 +151,7 @@ void CurrentVel(const gazebo_msgs::ModelStates::ConstPtr& msg)
     float vx = msg->twist[11].linear.x; // 11?? 
     float vy = msg->twist[11].linear.y;
     currentvel = sqrt((vx*vx)+(vy*vy));   // pyth why?
-    std::cout << "Current Vel: "<<currentvel << '\n';
+    std::cout << "CALLED!!!! Current Vel: "<<currentvel << std::endl;
 }
 
 void PathCallback(const nav_msgs::Path::ConstPtr& msg)
@@ -179,13 +179,22 @@ void PathCallback(const nav_msgs::Path::ConstPtr& msg)
             }
         }
     }
-    
+    std::cout << "First Push: "<< currentvel << std::endl; 
     Vel.data.push_back(currentvel);
     float u = Vel.data[0]; 
     for(int i=1; i<=NumData; i++)
-    {
-        float v = sqrt((u*u) + (2*a*PathDis[i]));
-        if(v < vmax)
+    {   
+        float v;
+
+        if (u*u - 2*a*PathDis[i] > 0){
+            v = sqrt((u*u) - (2*a*PathDis[i]));
+        }
+
+        else{
+            v = 0;
+        }
+        
+        if(v < vmax && cvStopLineDistance < 10)
         {        
             Vel.data.push_back(v);
         }
@@ -218,7 +227,7 @@ int main(int argc, char **argv)
 	ros::init(argc, argv, "vel_arr");
 	ros::NodeHandle RosNodeH;
 
-    // ros::Subscriber something = RosNodeH.subscribe("/gazebo/model_states",1,CurrentVel); // CHAGE THE SUB NAME
+    ros::Subscriber something = RosNodeH.subscribe("/gazebo/model_states",1,CurrentVel); // CHAGE THE SUB NAME
 	ros::Subscriber sub_path = RosNodeH.subscribe("/best_path",1,PathCallback); 
 
     ros::Subscriber stopLineDistance_Sub = RosNodeH.subscribe("dm/distance", 1000, CV_Stopline_callback);

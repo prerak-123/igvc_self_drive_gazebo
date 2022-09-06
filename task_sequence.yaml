@@ -1,0 +1,102 @@
+---
+ E_stop_manual: 
+   lane keeping:
+     offset_lane: +1
+     velocity: 3-5 mph
+   stop button: None
+  
+ E_stop_wireless:
+   lane keeping:
+     offset_lane: +1
+     velocity: 3-5 mph
+   E-button stop: None
+  
+ Lane_keeping:
+   lane keeping:
+     offset_lane: +1
+     velocity: 3-5 mph
+   stop_sign_action_server:
+     stop_distance_from_barrel: 3ft
+  
+ Lane_keeping_at_intersections:
+   lane_keeping:
+    offset_lane: +1
+    velocity: 4-5 mph
+   stop_sign_action_server:
+    stop_distance_from_barrel: 30 cm
+   lane_keeping:
+    offset_lane: +1
+    velocity: 4-5 mph
+   stop_sign_action_server:
+    stop_distance_from_barrel: 3ft
+
+ Left_Turn:
+   lane keeping:
+     offset_lane: +1
+     velocity: 2-5 mph
+   intersection_action_server:
+     offset_lane: -1
+     input: -1
+   lane keeping:
+     offset_lane: +1
+     velocity: 2-5 mph
+   stop_sign_action_server:
+     stop_distance_from_barrel: 3ft
+  
+ Right_Turn:
+   lane_keeping:
+     offset_lane: +1
+     velocity : 4-5 mph
+   intersection_action_server:
+     offset_lane: +1
+     input: 1
+   lane_keeping:
+     offset_lane: +1
+     velocity: 4-5 mph
+   stop_sign_action_server:
+     stop_distance_from_barrel: 3ft 
+
+ straight_lane_changing:
+   lane_keeping:
+     offset_lane: +1
+     velocity: 3-5 mph
+   mannequin_detection:
+    detection_distance: 10ft
+   lane_change: None
+   lane_keeping:
+     offset_lane: -1
+     velocity: 3-5 mph
+   stop_sign_action_server:
+     stop_distance_from_barrel: 3ft 
+
+ merging:
+   lane_following:
+    offset_lane: -1
+    velocity: 3-5 mph
+   merging_lane:
+    offset_lane: +1
+   lane_following:
+    offset_lane: +1
+    velocity: 3-5 mph
+   stop_sign_action_server:
+     stop_distance_from_barrel: 3ft
+
+ Curved_lane_handling:
+   lane_keeping:
+     offset_lane: +1
+     velocity: 3-5 mph
+   stop_sign_action_server:
+     stop_distance_from_barrel: 3ft
+
+ Curved_lane_changing:
+   lane_keeping:
+     #need to discuss offset lanes
+     velocity: 3-5 mph
+   lane_change: None #not entirely sure as to how the lane change  parameters will be given. need to discuss
+   lane_keeping:
+     velocity: 3-5 mph
+   lane_change: None
+   lane_keeping:
+     velocity: 3-5 mph
+   stop_sign_action_server:
+     stop_distance_from_barrel: 3ft

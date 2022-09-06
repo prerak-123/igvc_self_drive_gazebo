@@ -1,0 +1,15 @@
+#goal definition 
+int32 direction
+
+---
+#result definition
+bool success
+bool isEmergency
+int32 currentLane
+
+
+---
+#feeback definition
+float32 distanceLeft
+float32 angleLeft
+float32 offset
