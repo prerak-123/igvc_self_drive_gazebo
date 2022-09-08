@@ -1,0 +1,127 @@
+---
+ E_stop_manual: 
+   lane_keeping:
+     offset_lane: 1
+     lower_velocity: 3
+     upper_velocity: 5 #velocity units - mph
+   stop_button: None
+  
+ E_stop_wireless:
+   lane_keeping:
+     offset_lane: 1
+     lower_velocity: 3
+     upper_velocity: 5
+   E_button_stop: None
+  
+ Lane_keeping:
+   lane_keeping:
+     offset_lane: 1
+     lower_velocity: 3
+     upper_velocity: 5
+   stop_sign_action_server:
+     stop_distance_from_barrel: 91.44 #stopping distance units - cms
+  
+ Lane_keeping_at_intersections:
+   lane_keeping:
+    offset_lane: 1
+    lower_velocity: 4
+    upper_velocity: 5
+   stop_sign_action_server:
+    stop_distance_from_barrel: 30 cm
+   lane_keeping:
+    offset_lane: 1
+    lower_velocity: 4
+    upper_velocity: 5
+   stop_sign_action_server:
+    stop_distance_from_barrel: 91.44
+
+ Left_Turn:
+   lane_keeping:
+     offset_lane: 1
+     lower_velocity: 2
+     upper_velocity: 5
+   intersection_action_server:
+     offset_lane: -1
+     input: -1
+   lane_keeping:
+     offset_lane: 1
+     lower_velocity: 2
+     upper_velocity: 5
+   stop_sign_action_server:
+     stop_distance_from_barrel: 91.44
+  
+ Right_Turn:
+   lane_keeping:
+     offset_lane: 1
+     lower_velocity: 4
+     upper_velocity: 5
+   intersection_action_server:
+     offset_lane: 1
+     input: 1
+   lane_keeping:
+     offset_lane: 1
+     lower_velocity: 4
+     upper_velocity: 5
+   stop_sign_action_server:
+     stop_distance_from_barrel: 91.44
+
+ straight_lane_changing:
+   number_of_changes: 1
+   current_lane: None #take from cv
+   lane_keeping:
+     offset_lane: None #take current_lane
+     lower_velocity: 3
+     upper_velocity: 5
+   mannequin_detection:
+    detection_distance: 304.8
+   lane_change: None
+   lane_keeping:
+     offset_lane: None # to do current_lane * -1 but dont know yet how to implement
+     lower_velocity: 3
+     upper_velocity: 5
+   stop_sign_action_server:
+     stop_distance_from_barrel: 91.44
+
+ merging:
+   current_lane: None #take from cv
+   lane_keeping:
+    offset_lane: None #current lane
+    lower_velocity: 3
+    upper_velocity: 5
+   merging_lane:
+    offset_lane: 1
+   lane_keeping:
+    offset_lane: None #current lane * -1
+    lower_velocity: 3
+    upper_velocity: 5
+   stop_sign_action_server:
+     stop_distance_from_barrel: 91.44
+
+ Curved_lane_handling:
+   current_lane: None #take from cv
+   lane_keeping:
+     offset_lane: None #take current lane from cv
+     lower_velocity: 3
+     upper_velocity: 5
+   stop_sign_action_server:
+     stop_distance_from_barrel: 91.44
+
+ Curved_lane_changing:
+   number_of_changes: 2
+   current_lane: None #take from cv
+   lane_keeping:
+     offset_lane: None #current_lane
+     lower_velocity: 3
+     upper_velocity: 5
+   lane_change: None #not entirely sure as to how the lane change  parameters will be given. need to discuss
+   lane_keeping:
+     offset_lane: None #current_lane*-1
+     lower_velocity: 3
+     upper_velocity: 5
+   lane_change: None
+   lane_keeping:
+     offset_lane: None #current_lane*-1
+     lower_velocity: 3
+     upper_velocity: 5
+   stop_sign_action_server:
+     stop_distance_from_barrel: 91.44
