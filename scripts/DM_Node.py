@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 from __future__ import print_function
 from this import d
 
@@ -14,7 +14,8 @@ algo = AgglomerativeClustering(3)
 
 class DMNode():
     def __init__(self):
-        rospy.Subscriber('/cv/custom_msg', CV, self.callback)
+        rospy.Subscriber('/cv/output', CV, self.callback)
+        #rospy.Subscriber('/cv/custom_msg', CV, self.callback)
         occgrid_topic = "/cv/laneoccgrid"
         local_goal_topic = "/move_base_simple/goal_cv"
         
