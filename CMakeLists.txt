@@ -8,6 +8,12 @@ add_action_files(
   FILES stopline.action
 )
 
+add_message_files(
+  FILES
+  Task.msg
+  CV.msg
+)
+
 generate_messages(
   DEPENDENCIES actionlib_msgs std_msgs  # Or other packages containing msgs
 )
